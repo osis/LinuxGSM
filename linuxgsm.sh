@@ -42,9 +42,9 @@ configdirdefault="${lgsmdir}/config-default"
 ## GitHub Branch Select
 # Allows for the use of different function files
 # from a different repo and/or branch.
-githubuser="GameServerManagers"
+githubuser="osis"
 githubrepo="LinuxGSM"
-githubbranch="master"
+githubbranch="container"
 
 # Core Function that is required first
 core_functions.sh(){
@@ -258,17 +258,6 @@ fn_install_file(){
 	echo ""
 	exit
 }
-
-# Prevent from running this script as root.
-if [ "$(whoami)" == "root" ]; then
-	if [ ! -f "${functionsdir}/core_functions.sh" ]||[ ! -f "${functionsdir}/check_root.sh" ]||[ ! -f "${functionsdir}/core_messages.sh" ]; then
-		echo "[ FAIL ] Do NOT run this script as root!"
-		exit 1
-	else
-		core_functions.sh
-		check_root.sh
-	fi
-fi
 
 # LinuxGSM installer mode
 if [ "${shortname}" == "core" ]; then
